@@ -28,6 +28,24 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+      function runApp() {
+      liff.getProfile().then(profile => {
+        console.log(profile.userId) ;
+        console.log(profile.displayName) ;
+        console.log(profile.statusMessage) ;
+        console.log(liff.getDecodedIDToken().email) ;
+      }).catch(err => console.error(err));
+    }
+      liff.init({ liffId: "1657554488-4q7a7Olo" }, () => {
+        if (liff.isLoggedIn()) {
+          runApp();
+        } else {
+          liff.login();
+        }
+      }, err => console.error(err.code, error.message));
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
