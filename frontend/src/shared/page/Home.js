@@ -28,7 +28,7 @@ const Home = () => {
       <Card>
       <ul>
         <li>
-          <NavLink to="/order">ALL USERS</NavLink>
+          <NavLink to="/order">Order</NavLink>
         </li>
       </ul>
       </Card>
