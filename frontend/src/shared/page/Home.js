@@ -9,6 +9,7 @@ const Home = () => {
     userId: "",
     displayName: "",
     statusMessage: "",
+    email:""
   });
   useEffect(() => {
     const getUserProfile = async () => {
@@ -17,11 +18,12 @@ const Home = () => {
         ...profile,
         userId: userLineProfile.userId,
         displayName: userLineProfile.displayName,
-        statusMessage: userLineProfile.statusMessage,
+        statusMessage: userLineProfile.statusMessage, 
+        email: liff.getDecodedIDToken().email
       });
     };
     getUserProfile();
-  }, [liff, profile]);
+  }, []);
   return (
     <div>
       Home Jaaaaa
@@ -37,6 +39,7 @@ const Home = () => {
         <p>userId:{profile.userId}</p>
         <p>displayName: {profile.displayName}</p>
         <p>statusMessage: {profile.statusMessage}</p>
+        <p>email: {profile.email}</p>
         </Card>
       </div>
     </div>
