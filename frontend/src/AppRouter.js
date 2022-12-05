@@ -8,9 +8,9 @@ import {
 
 import { useAuth } from "./shared/hooks/auth-hook";
 import { AuthContext } from "./shared/context/auth-context";
-import { Alert } from "react-bootstrap";
 const Home = lazy(() => import("./shared/page/Home"));
-const Order = lazy(() => import("./order/page/Order"));
+const Order = lazy(() => import("./order/page/OrderNew"));
+const QrCodeReader = lazy(() => import("./order/page/QrCodeReader"));
 const ALRegistration = lazy(() => import("./registration/ALRegistration"));
 const LMRegistration = lazy(() => import("./registration/LMRegistration"));
 
@@ -35,6 +35,7 @@ const AppRouter = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/order" element={<Order />} />
+              <Route path="/qrcodeReader" element={<QrCodeReader />} />
               <Route path="/arealeaderregistration" element={<ALRegistration />} />
               <Route path="/riderregistration" element={<LMRegistration />} />
               <Route path="*" element={<Navigate to="/" replace />} />

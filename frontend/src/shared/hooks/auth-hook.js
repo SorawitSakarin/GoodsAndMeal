@@ -48,16 +48,30 @@ export const useAuth = () => {
   const [statusMessage, setstatusMessage] = useState(false)
   const [email, setemail] = useState(false);
 
+
+  
+
   useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("LIFF_STORE:1657554488-4q7a7Olo:decodedIDToken"));
+    
     const getUserProfile = async () => {
       const userLineProfile = await liff.getProfile();
       setuserId(userLineProfile.userId);
       setdisplayName(userLineProfile.displayName);
       setstatusMessage(userLineProfile.statusMessage);
       setemail(liff.getDecodedIDToken().email);
-      
     };
-    getUserProfile();
+
+    if(storedData && storedData.sub && storedData.email && storedData.name){
+      setuserId(storedData.sub);
+      setdisplayName(storedData.name);
+      setemail(storedData.email);
+    }
+    else {
+      getUserProfile();
+    }
+    
+    
   }, []);
 
 

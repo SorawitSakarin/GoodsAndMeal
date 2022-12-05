@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Figure } from "react-bootstrap";
 import { AuthContext } from "../context/auth-context";
+import GMLogo from "../../images/GMLogo.png";
 
 const Home = () => {
   const auth = useContext(AuthContext);
@@ -49,8 +50,11 @@ const Home = () => {
         {auth.position && <p>You have a position</p>}
         {!auth.position && (
           <Card style={{ textAlign: "center" }}>
-            <h4 className="m-5">คุณยังไม่ได้ทำการลงทะเบียน</h4>
-            <h6> โปรดทำการลงทะเบียนก่อน</h6>
+            <Figure className="m-5">
+              <Figure.Image width={200} alt="GoodsMealLogo" src={GMLogo} />
+            </Figure>
+            <h4 className="mb-1">คุณยังไม่ได้ทำการลงทะเบียน</h4>
+            <h4> โปรดทำการลงทะเบียนก่อน</h4>
             <Container>
               <Row>
                 <Col>
@@ -61,7 +65,7 @@ const Home = () => {
                   </Button>
                 </Col>
                 <Col>
-                  <Button variant="outline-warning">
+                  <Button variant="outline-warning" disabled={false}>
                     <NavLink to="/riderregistration">
                       ลงทะเบียนเป็นคนขับ Rider
                     </NavLink>
@@ -71,6 +75,24 @@ const Home = () => {
             </Container>
           </Card>
         )}
+      </div>
+      <div>
+        <Card style={{ textAlign: "center" }}>
+          <Container>
+            <Row>
+              <Col>
+                <Button variant="warning">
+                  <NavLink to="/order">ดู Order รายวัน</NavLink>
+                </Button>
+              </Col>
+              <Col>
+                <Button variant="outline-warning">
+                  <NavLink to="/qrcodeReader">Scan QrCode</NavLink>
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </Card>
       </div>
     </div>
   );
